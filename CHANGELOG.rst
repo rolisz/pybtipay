@@ -2,6 +2,11 @@
 Changelog
 =========
 
+0.0.2 (2021-11-11)
+----------------
+* Add support for registering a payment.
+* Add support for checking the status of a payment.
+
 0.0.1 (2021-11-11)
 ------------------
 
