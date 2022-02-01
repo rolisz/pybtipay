@@ -3,6 +3,9 @@ import json
 
 import requests as requests
 
+from btipay.exceptions import BTIPayException
+from btipay.responses import PaymentRegistration, PaymentStatus
+
 
 class BTIPayClient:
 
@@ -42,7 +45,12 @@ class BTIPayClient:
         }
         url = f"{self._base_url}payment/rest/register.do"
         resp = requests.get(url, params=params)
-        return resp
+        if resp:
+            result = resp.json()
+            if 'errorCode' in result:
+                raise BTIPayException(result)
+            return PaymentRegistration(orderId=result['orderId'], formUrl=result['formUrl'])
+        raise BTIPayException({"errorMessage": "Network error", "details": resp.text})
 
     def get_payment_status(self, order_id):
         params = {
@@ -52,4 +60,12 @@ class BTIPayClient:
         }
         url = f"{self._base_url}payment/rest/getOrderStatusExtended.do"
         resp = requests.get(url, params=params)
-        return resp
+        if resp:
+            result = resp.json()
+            if 'errorCode' in result:
+                raise BTIPayException({"errorCode": result['errorCode'],
+                                       "errorMessage": result['errorMessage'],
+                                       "actionCode": result['actionCode'],
+                                       "actionCodeDescription": result['actionCodeDescription']})
+            return PaymentStatus.parse_obj(result)
+        raise BTIPayException({"errorMessage": "Network error", "details": resp.text})
