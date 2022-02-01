@@ -62,10 +62,5 @@ class BTIPayClient:
         resp = requests.get(url, params=params)
         if resp:
             result = resp.json()
-            if 'errorCode' in result:
-                raise BTIPayException({"errorCode": result['errorCode'],
-                                       "errorMessage": result['errorMessage'],
-                                       "actionCode": result['actionCode'],
-                                       "actionCodeDescription": result['actionCodeDescription']})
             return PaymentStatus.parse_obj(result)
         raise BTIPayException({"errorMessage": "Network error", "details": resp.text})
