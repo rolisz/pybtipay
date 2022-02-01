@@ -109,3 +109,8 @@ Note, to combine the coverage data from all the tox environments run:
       - ::
 
             PYTEST_ADDOPTS=--cov-append tox
+
+
+Deployment
+==========
+Run `python -m build`, `twine check` and then `twine upload dist/*`.
