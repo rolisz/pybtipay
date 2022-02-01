@@ -55,9 +55,9 @@ Overview
     :alt: Supported implementations
     :target: https://pypi.org/project/btipay
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/rolisz/pybtipay/v0.0.3.svg
+.. |commits-since| image:: https://img.shields.io/github/commits-since/rolisz/pybtipay/v0.0.4.svg
     :alt: Commits since latest release
-    :target: https://github.com/rolisz/pybtipay/compare/v0.0.3...master
+    :target: https://github.com/rolisz/pybtipay/compare/v0.0.4...master
 
 
 

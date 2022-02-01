@@ -23,7 +23,7 @@ def read(*names, **kwargs):
 
 setup(
     name='btipay',
-    version='0.0.3',
+    version='0.0.4',
     license='MIT',
     description='Python package for using the Banca Transilvania iPay API.',
     long_description='%s\n%s' % (
