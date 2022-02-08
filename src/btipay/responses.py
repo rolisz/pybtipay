@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Optional
 
 from pydantic import BaseModel
 
@@ -19,13 +20,13 @@ class PaymentStatus(BaseModel):
     currency: str
     date: datetime
     orderDescription: str
-    ip: str
-    merchantOrderParams: list
-    attributes: list
-    cardAuthInfo: dict
-    authDateTime: datetime
-    terminalId: str
-    authRefNum: str
-    paymentAmountInfo: dict
-    bankInfo: dict
-    orderBundle: dict
+    ip: Optional[str] = None
+    merchantOrderParams: Optional[list] = None
+    attributes: Optional[list] = None
+    cardAuthInfo: Optional[dict] = None
+    authDateTime: Optional[datetime] = None
+    terminalId: Optional[str] = None
+    authRefNum: Optional[str] = None
+    paymentAmountInfo: Optional[dict] = None
+    bankInfo: Optional[dict] = None
+    orderBundle: Optional[dict] = None
