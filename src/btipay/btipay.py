@@ -24,7 +24,7 @@ class BTIPayClient:
             "currency": 946,
             "description": description,
             "returnUrl": return_url,
-            "jsonParams": json.dumps({"FORCE_3DS2": True}),
+            # "jsonParams": json.dumps({"FORCE_3DS2": True}),
             "orderBundle": json.dumps(
                 {"orderCreationDate": datetime.date.today().isoformat(),
                  "customerDetails": {
@@ -44,7 +44,7 @@ class BTIPayClient:
                  }})
         }
         url = f"{self._base_url}payment/rest/register.do"
-        resp = requests.get(url, params=params)
+        resp = requests.post(url, data=params)
         if resp:
             result = resp.json()
             if 'errorCode' in result:
