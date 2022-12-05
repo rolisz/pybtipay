@@ -1,6 +1,11 @@
 
 Changelog
 =========
+0.0.6 (2022-12-05)
+------------------
+* Drop JSON Params field
+* Use POST method
+
 0.0.5 (2022-02-08)
 ------------------
 * Mark some fields as optional
